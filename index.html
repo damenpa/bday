@@ -1,12 +1,82 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feliz Cumpleaños, Danae</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      background: black;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/BD3cGYN.jpg') repeat;
+      animation: moveStars 50s linear infinite;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 10000px; }
+    }
+
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .message h1 {
+      font-size: 4em;
+      text-shadow: 0 0 20px #fff, 0 0 30px #f09, 0 0 40px #f09;
+    }
+
+    .message p {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hola, Danae 🎉🎂</h1>
-  <p>Te deseo lo mejor en tu cumpleaños. Que tengas un día increíble</p>
+  <div class="stars"></div>
+  <div class="particles"></div>
+  <div class="message">
+    <h1>¡Feliz Cumpleaños, Danae!</h1>
+    <p>Que tu día esté lleno de estrellas, planetas y sueños infinitos.</p>
+  </div>
+  <script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.min.js"></script>
+  <script>
+    particlesJS('particles', {
+      particles: {
+        number: { value: 150 },
+        size: { value: 3 },
+        move: { speed: 0.5 },
+        line_linked: { enable: false },
+        color: { value: "#ffffff" }
+      }
+    });
+  </script>
 </body>
 </html>
+
