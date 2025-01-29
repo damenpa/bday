@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feliz Cumpleaños, Danae</title>
+  <title>¡Feliz Cumpleaños, Danae!</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       overflow: hidden;
       font-family: 'Arial', sans-serif;
       color: white;
-      background: black;
+      background: linear-gradient(45deg, #4e2a84, #111, #0d1a2b);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .stars {
@@ -19,6 +28,7 @@
       height: 100%;
       background: url('https://i.imgur.com/BD3cGYN.jpg') repeat;
       animation: moveStars 50s linear infinite;
+      z-index: -1;
     }
 
     @keyframes moveStars {
@@ -33,16 +43,20 @@
       transform: translate(-50%, -50%);
       text-align: center;
       animation: fadeIn 3s ease-in-out;
+      z-index: 1;
     }
 
     .message h1 {
-      font-size: 4em;
-      text-shadow: 0 0 20px #fff, 0 0 30px #f09, 0 0 40px #f09;
+      font-size: 4.5em;
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff69b4, 0 0 40px #ff69b4, 0 0 50px #ff69b4;
+      animation: pulse 1.5s infinite alternate;
     }
 
     .message p {
-      font-size: 1.5em;
+      font-size: 1.8em;
       margin-top: 20px;
+      font-weight: bold;
+      text-shadow: 0 0 15px #fff, 0 0 30px #ff69b4;
     }
 
     @keyframes fadeIn {
@@ -50,31 +64,43 @@
       to { opacity: 1; }
     }
 
+    @keyframes pulse {
+      0% { text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4, 0 0 40px #ff69b4; }
+      100% { text-shadow: 0 0 30px #ff69b4, 0 0 50px #ff69b4, 0 0 60px #ff69b4; }
+    }
+
     .particles {
       position: absolute;
       width: 100%;
       height: 100%;
       pointer-events: none;
+      z-index: 0;
     }
   </style>
 </head>
 <body>
   <div class="stars"></div>
-  <div class="particles"></div>
+  <div class="particles" id="particles"></div>
   <div class="message">
-    <h1>¡Feliz Cumpleaños, Danae!</h1>
+    <h1>¡Feliz Cumpleaños, Danae! 🎉🎂</h1>
     <p>Que tu día esté lleno de estrellas, planetas y sueños infinitos.</p>
   </div>
   <script src="https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/particles.min.js"></script>
   <script>
     particlesJS('particles', {
       particles: {
-        number: { value: 150 },
-        size: { value: 3 },
+        number: { value: 100 },
+        size: { value: 4 },
         move: { speed: 0.5 },
         line_linked: { enable: false },
-        color: { value: "#ffffff" }
+        color: { value: "#ff69b4" },
+        opacity: { value: 0.5 }
       }
+    });
+  </script>
+</body>
+</html>
+
     });
   </script>
 </body>
