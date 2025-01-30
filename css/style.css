@@ -34,12 +34,12 @@ body {
   position: absolute;
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Efecto de brillo */
-  animation: orbit 20s linear infinite;
 }
 
-/* Estilo específico para planetas */
+/* Estilo específico para planetas con texturas */
 .planet1 {
-  background-color: #ff5733; /* Marte */
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Marte */
+  background-size: cover;
   width: 80px;
   height: 80px;
   top: 15%;
@@ -47,7 +47,8 @@ body {
 }
 
 .planet2 {
-  background-color: #ffd700; /* Júpiter */
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Júpiter */
+  background-size: cover;
   width: 120px;
   height: 120px;
   top: 50%;
@@ -55,7 +56,8 @@ body {
 }
 
 .planet3 {
-  background-color: #1e90ff; /* Neptuno */
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Neptuno */
+  background-size: cover;
   width: 90px;
   height: 90px;
   top: 30%;
@@ -63,7 +65,8 @@ body {
 }
 
 .planet4 {
-  background-color: #32cd32; /* Venus */
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Venus */
+  background-size: cover;
   width: 60px;
   height: 60px;
   top: 80%;
@@ -71,7 +74,8 @@ body {
 }
 
 .planet5 {
-  background-color: #f4a300; /* Saturno */
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Saturno */
+  background-size: cover;
   width: 110px;
   height: 110px;
   top: 40%;
@@ -89,30 +93,9 @@ body {
   top: -25px;
   left: -25px;
   z-index: -1;
-  animation: rotateRing 15s linear infinite; /* Rotación del anillo */
 }
 
-/* Animación de órbita de los planetas */
-@keyframes orbit {
-  0% {
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateX(300px) rotate(360deg);
-  }
-}
-
-/* Animación del anillo de Saturno */
-@keyframes rotateRing {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Efectos de la tarjeta de cumpleaños */
+/* El resto de la tarjeta de cumpleaños y los globos permanece igual */
 .birthdayCard {
   position: relative;
   width: 250px;
