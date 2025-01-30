@@ -3,145 +3,80 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: linear-gradient(135deg, #239ac2, #ff6f61);
-}
-
-.birthdayCard {
-  position: relative;
-  width: 250px;
-  height: 350px;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transform: perspective(2500px);
-  transition: 1s;
-}
-
-.birthdayCard:hover {
-  transform: perspective(2500px) rotate(5deg);
-  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.3),
-              0 20px 150px rgba(0, 0, 0, 0.8);
-}
-
-.birthdayCard:hover .cardFront {
-  transform: rotateY(-160deg);
-}
-
-.birthdayCard:hover .happy {
-  visibility: hidden;
-}
-
-.cardFront {
-  position: relative;
-  background-color: #fff;
-  width: 250px;
-  height: 350px;
+  margin: 0;
+  background: radial-gradient(circle at center, #000428, #004e92);
   overflow: hidden;
-  transform-origin: left;
-  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
-              30px 0 50px rgba(0, 0, 0, 0.4);
-  transition: 0.6s;
+  position: relative;
 }
 
-.happy {
-  font-family: Tahoma, sans-serif;
-  text-align: center;
-  margin: 30px;
-  font-size: 24px;
-  font-weight: bold;
-  background-image: linear-gradient(120deg, #ffd856 0%, #f98c6e 100%);
-  text-shadow: 0 0 10px #ffd856, 0 0 20px #ffd856, 0 0 30px #ffd856;
-  transition: 0.1s;
-}
-
-.balloons {
+/* Estrellas */
+.star {
   position: absolute;
-}
-
-.balloon-1,
-.balloon-2,
-.balloon-3,
-.balloon-4 {
-  position: absolute;
-  width: 85px;
-  height: 95px;
+  width: 2px;
+  height: 2px;
+  background: white;
   border-radius: 50%;
-  animation: float 3s ease-in-out infinite;
+  animation: twinkle 2s infinite ease-in-out;
 }
 
-.balloon-1 { background-color: rgba(255, 40, 90, 0.7); left: -10px; top: 50px; animation-delay: 0s; }
-.balloon-2 { background-color: rgba(9, 215, 160, 0.7); left: 50px; top: 20px; animation-delay: 0.5s; }
-.balloon-3 { background-color: rgba(255, 186, 26, 0.7); left: 110px; top: 50px; animation-delay: 1s; }
-.balloon-4 { background-color: rgba(12, 122, 159, 0.7); left: 170px; top: 50px; animation-delay: 1.5s; }
+@keyframes twinkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Cometas */
+.comet {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), transparent);
+  border-radius: 50%;
+  animation: cometFly 10s linear infinite;
+}
+
+@keyframes cometFly {
+  0% {
+    transform: translateX(-100vw) translateY(-50vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(50vh);
+    opacity: 0;
+  }
+}
+
+/* Planetas */
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 20s infinite ease-in-out;
+}
+
+.planet-1 {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #ff9a9e, #fad0c4);
+  top: 10%;
+  left: 20%;
+}
+
+.planet-2 {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #a1c4fd, #c2e9fb);
+  top: 50%;
+  left: 70%;
+}
+
+.planet-3 {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #fbc2eb, #a6c1ee);
+  top: 80%;
+  left: 40%;
+}
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.balloon-1::before,
-.balloon-2::before,
-.balloon-3::before,
-.balloon-4::before {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 155px;
-  background-color: #ffc848;
-  top: 95px;
-  left: 43px;
-}
-
-.balloon-1::after,
-.balloon-2::after,
-.balloon-3::after,
-.balloon-4::after {
-  content: "";
-  position: absolute;
-  border-right: 7px solid transparent;
-  border-left: 7px solid transparent;
-  top: 94px;
-  left: 37px;
-}
-
-.balloon-1::after { border-bottom: 10px solid #ff3e6b; }
-.balloon-2::after { border-bottom: 10px solid #04b183; }
-.balloon-3::after { border-bottom: 10px solid #ffc94c; }
-.balloon-4::after { border-bottom: 10px solid #13a9bd; }
-
-.cardInside {
-  position: absolute;
-  background-color: #fff;
-  width: 250px;
-  height: 350px;
-  z-index: -1;
-  left: 0;
-  top: 0;
-  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
-}
-
-p {
-  font-family: "Brush Script MT", cursive;
-  margin: 40px;
-  color: #333;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: justify;
-}
-
-.name {
-  position: absolute;
-  left: 150px;
-  top: 200px;
-  color: #ff6f61;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.back {
-  font-family: Tahoma, sans-serif;
-  color: #333;
-  text-align: center;
-  margin: 30px;
-  outline-color: #333;
-  outline-style: dotted;
+  50% { transform: translateY(-20px); }
 }
