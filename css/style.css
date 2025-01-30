@@ -1,35 +1,62 @@
-/* Definición de la animación */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px); /* Mueve los globos hacia arriba */
-  }
-  100% {
-    transform: translateY(0); /* Vuelve a la posición original */
-  }
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
+/* Fondo con luna y estrellas */
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-color: #001c36; /* Fondo nocturno oscuro */
+  overflow: hidden;
   margin: 0;
-  background-color: #111; /* Fondo oscuro para simular noche */
-  overflow: hidden; /* Asegura que no aparezcan barras de desplazamiento */
+  position: relative;
 }
 
+/* Estrellas */
+.estrellas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Fondo de estrellas */
+  animation: moveStars 300s infinite linear;
+  z-index: -1;
+}
+
+@keyframes moveStars {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
+}
+
+/* Luna */
+.luna {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 150px;
+  height: 150px;
+  background-color: #f0e68c;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  z-index: -1;
+  filter: blur(3px);
+}
+
+/* Animación de la luna */
+.luna::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 100px;
+  height: 100px;
+  background-color: #f7f7f7;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Efectos de la tarjeta de cumpleaños */
 .birthdayCard {
   position: relative;
   width: 250px;
@@ -38,7 +65,6 @@ body {
   transform-style: preserve-3d;
   transform: perspective(2500px);
   transition: 1s;
-  z-index: 2;
 }
 
 .birthdayCard:hover {
@@ -87,7 +113,6 @@ body {
   width: 85px;
   height: 95px;
   border-radius: 50%;
-  animation: float 3s ease-in-out infinite; /* Aplica la animación */
 }
 
 .balloon-1 {
@@ -155,6 +180,7 @@ body {
   border-bottom: 10px solid #13a9bd;
 }
 
+/* El interior de la tarjeta */
 .cardInside {
   position: absolute;
   background-color: #fff;
@@ -188,27 +214,19 @@ p {
   outline-style: dotted;
 }
 
-/* Estilos para la luna y las estrellas en el fondo */
-.luna {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 100px;
-  height: 100px;
-  background-color: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-  z-index: 1;
+/* Animación de los globos */
+@keyframes floatBalloons {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
-.estrellas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle, #fff 2%, transparent 2%);
-  background-size: 10px 10px;
-  animation: twinkle 1.5s infinite;
-  z-index: 0;
+.balloons div {
+  animation: floatBalloons 5s ease-in-out infinite;
 }
