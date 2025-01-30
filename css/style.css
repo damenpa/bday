@@ -18,11 +18,11 @@ body {
   height: 2px;
   background: white;
   border-radius: 50%;
-  animation: twinkle 2s infinite ease-in-out;
+  animation: twinkle 2s infinite ease-in-out alternate;
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }
 }
 
@@ -33,16 +33,17 @@ body {
   height: 4px;
   background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), transparent);
   border-radius: 50%;
-  animation: cometFly 10s linear infinite;
+  will-change: transform, opacity;
+  animation: cometFly 5s linear infinite;
 }
 
 @keyframes cometFly {
-  0% {
-    transform: translateX(-100vw) translateY(-50vh);
+  from {
+    transform: translate(-10vw, -10vh);
     opacity: 1;
   }
-  100% {
-    transform: translateX(100vw) translateY(50vh);
+  to {
+    transform: translate(100vw, 100vh);
     opacity: 0;
   }
 }
@@ -51,7 +52,8 @@ body {
 .planet {
   position: absolute;
   border-radius: 50%;
-  animation: float 20s infinite ease-in-out;
+  will-change: transform;
+  animation: float 10s infinite ease-in-out alternate;
 }
 
 .planet-1 {
@@ -63,8 +65,8 @@ body {
 }
 
 .planet-2 {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   background: radial-gradient(circle, #a1c4fd, #c2e9fb);
   top: 50%;
   left: 70%;
@@ -79,19 +81,19 @@ body {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
 }
 
 /* Tarjeta de cumpleaños */
 .birthdayCard {
   position: relative;
-  width: 250px;
-  height: 350px;
+  width: 260px;
+  height: 360px;
   cursor: pointer;
   transform-style: preserve-3d;
   transform: perspective(1000px);
-  transition: transform 1s;
+  transition: transform 0.8s;
 }
 
 .birthdayCard:hover {
@@ -104,7 +106,7 @@ body {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .cardFront {
@@ -131,7 +133,6 @@ body {
   background-image: linear-gradient(120deg, #ffd856 0%, #f98c6e 100%);
   -webkit-background-clip: text;
   color: transparent;
-  text-shadow: 0 0 10px #ffd856, 0 0 20px #ffd856, 0 0 30px #ffd856;
 }
 
 .balloons {
@@ -141,51 +142,19 @@ body {
   margin-top: 20px;
 }
 
-.balloon-1,
-.balloon-2,
-.balloon-3,
-.balloon-4 {
+.balloon-1, .balloon-2, .balloon-3, .balloon-4 {
   position: absolute;
-  width: 85px;
-  height: 95px;
+  width: 80px;
+  height: 90px;
   border-radius: 50%;
-  animation: float 3s ease-in-out infinite;
+  will-change: transform;
+  animation: float 3s ease-in-out infinite alternate;
 }
 
-.balloon-1 { background-color: rgba(255, 40, 90, 0.7); left: -10px; top: 0; animation-delay: 0s; }
-.balloon-2 { background-color: rgba(9, 215, 160, 0.7); left: 50px; top: 20px; animation-delay: 0.5s; }
-.balloon-3 { background-color: rgba(255, 186, 26, 0.7); left: 110px; top: 0; animation-delay: 1s; }
-.balloon-4 { background-color: rgba(12, 122, 159, 0.7); left: 170px; top: 20px; animation-delay: 1.5s; }
-
-.balloon-1::before,
-.balloon-2::before,
-.balloon-3::before,
-.balloon-4::before {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 155px;
-  background-color: #ffc848;
-  top: 95px;
-  left: 43px;
-}
-
-.balloon-1::after,
-.balloon-2::after,
-.balloon-3::after,
-.balloon-4::after {
-  content: "";
-  position: absolute;
-  border-right: 7px solid transparent;
-  border-left: 7px solid transparent;
-  top: 94px;
-  left: 37px;
-}
-
-.balloon-1::after { border-bottom: 10px solid #ff3e6b; }
-.balloon-2::after { border-bottom: 10px solid #04b183; }
-.balloon-3::after { border-bottom: 10px solid #ffc94c; }
-.balloon-4::after { border-bottom: 10px solid #13a9bd; }
+.balloon-1 { background-color: rgba(255, 40, 90, 0.8); left: 10px; top: 0; }
+.balloon-2 { background-color: rgba(9, 215, 160, 0.8); left: 60px; top: 20px; }
+.balloon-3 { background-color: rgba(255, 186, 26, 0.8); left: 120px; top: 0; }
+.balloon-4 { background-color: rgba(12, 122, 159, 0.8); left: 180px; top: 20px; }
 
 p {
   font-family: "Brush Script MT", cursive;
