@@ -1,3 +1,16 @@
+/* Definición de la animación */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px); /* Mueve los globos hacia arriba */
+  }
+  100% {
+    transform: translateY(0); /* Vuelve a la posición original */
+  }
+}
+
 body {
   display: flex;
   align-items: center;
@@ -62,6 +75,7 @@ body {
   width: 85px;
   height: 95px;
   border-radius: 50%;
+  animation: float 3s ease-in-out infinite; /* Aplica la animación */
 }
 
 .balloon-1 {
