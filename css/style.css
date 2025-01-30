@@ -32,84 +32,84 @@ body {
 /* Cometas */
 .cometa {
   position: absolute;
-  width: 100px;
-  height: 2px;
+  width: 150px;
+  height: 3px;
   background-color: #fff;
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
 }
 
 .cometa::after {
   content: '';
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: #fff;
-  top: -5px;
-  left: 95px;
+  top: -6px;
+  left: 140px;
   animation: cometTail 1s infinite;
 }
 
-/* Animación de cometas cruzando el fondo */
+/* Animación de cola de los cometas */
 @keyframes cometTail {
   0% {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     opacity: 1;
   }
   100% {
-    width: 2px;
-    height: 2px;
+    width: 3px;
+    height: 3px;
     opacity: 0;
   }
 }
 
-/* Movimiento de los cometas */
+/* Movimiento de los cometas en diagonal */
 @keyframes moveComet1 {
   0% {
-    left: -120px;
+    left: -150px;
     top: 10%;
   }
   100% {
-    left: 100vw;
-    top: 40%;
+    left: 110vw;
+    top: 80%;
   }
 }
 
 @keyframes moveComet2 {
   0% {
-    left: -150px;
-    top: 50%;
+    left: -200px;
+    top: 20%;
   }
   100% {
     left: 120vw;
-    top: 10%;
+    top: 50%;
   }
 }
 
 @keyframes moveComet3 {
   0% {
     left: -100px;
-    top: 70%;
+    top: 30%;
   }
   100% {
-    left: 100vw;
-    top: 80%;
+    left: 120vw;
+    top: 70%;
   }
 }
 
 /* Estilos individuales para los cometas */
 .cometa1 {
-  animation: moveComet1 10s infinite linear;
+  animation: moveComet1 6s infinite linear;
 }
 
 .cometa2 {
-  animation: moveComet2 12s infinite linear;
+  animation: moveComet2 5s infinite linear;
 }
 
 .cometa3 {
-  animation: moveComet3 15s infinite linear;
+  animation: moveComet3 4s infinite linear;
 }
 
 /* El resto de la tarjeta de cumpleaños y los globos permanece igual */
@@ -286,4 +286,3 @@ p {
 .balloons div {
   animation: floatBalloons 5s ease-in-out infinite;
 }
-
