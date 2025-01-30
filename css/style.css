@@ -1,4 +1,4 @@
-/* Fondo con luna y estrellas */
+/* Fondo con estrellas y planetas */
 body {
   display: flex;
   align-items: center;
@@ -29,43 +29,87 @@ body {
   }
 }
 
-/* Luna */
-.luna {
+/* Planetas del sistema solar */
+.planet {
   position: absolute;
-  top: 100px;  /* Ajustamos la posición */
-  right: 50px;
-  width: 150px;
-  height: 150px;
-  background-color: #f0e68c;
   border-radius: 50%;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Efecto de brillo */
+  animation: orbit 20s linear infinite;
+}
+
+/* Estilo específico para planetas */
+.planet1 {
+  background-color: #ff5733; /* Marte */
+  width: 80px;
+  height: 80px;
+  top: 15%;
+  left: 10%;
+}
+
+.planet2 {
+  background-color: #ffd700; /* Júpiter */
+  width: 120px;
+  height: 120px;
+  top: 50%;
+  left: 70%;
+}
+
+.planet3 {
+  background-color: #1e90ff; /* Neptuno */
+  width: 90px;
+  height: 90px;
+  top: 30%;
+  left: 60%;
+}
+
+.planet4 {
+  background-color: #32cd32; /* Venus */
+  width: 60px;
+  height: 60px;
+  top: 80%;
+  left: 30%;
+}
+
+.planet5 {
+  background-color: #f4a300; /* Saturno */
+  width: 110px;
+  height: 110px;
+  top: 40%;
+  left: 40%;
+}
+
+/* Anillo para Saturno */
+.planet5::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 10px solid rgba(255, 255, 255, 0.5); /* Anillo brillante */
+  top: -25px;
+  left: -25px;
   z-index: -1;
-  filter: blur(3px);
-  /* Media luna con pseudo-elemento */
+  animation: rotateRing 15s linear infinite; /* Rotación del anillo */
 }
 
-.luna::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50px; /* Mueve la sombra para crear la media luna */
-  width: 100%;
-  height: 100%;
-  background-color: #001c36; /* Color del fondo para ocultar la parte "comida" */
-  border-radius: 50%;
+/* Animación de órbita de los planetas */
+@keyframes orbit {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(300px) rotate(360deg);
+  }
 }
 
-/* Animación de la luna */
-.luna::after {
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 100px;
-  height: 100px;
-  background-color: #f7f7f7;
-  border-radius: 50%;
-  filter: blur(2px);
+/* Animación del anillo de Saturno */
+@keyframes rotateRing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Efectos de la tarjeta de cumpleaños */
@@ -242,4 +286,3 @@ p {
 .balloons div {
   animation: floatBalloons 5s ease-in-out infinite;
 }
-
