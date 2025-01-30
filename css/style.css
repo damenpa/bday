@@ -1,4 +1,4 @@
-/* Fondo con estrellas y planetas */
+/* Fondo con estrellas y cometas */
 body {
   display: flex;
   align-items: center;
@@ -29,70 +29,87 @@ body {
   }
 }
 
-/* Planetas del sistema solar */
-.planet {
+/* Cometas */
+.cometa {
   position: absolute;
+  width: 100px;
+  height: 2px;
+  background-color: #fff;
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Efecto de brillo */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
-/* Estilo específico para planetas con texturas */
-.planet1 {
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Marte */
-  background-size: cover;
-  width: 80px;
-  height: 80px;
-  top: 15%;
-  left: 10%;
-}
-
-.planet2 {
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Júpiter */
-  background-size: cover;
-  width: 120px;
-  height: 120px;
-  top: 50%;
-  left: 70%;
-}
-
-.planet3 {
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Neptuno */
-  background-size: cover;
-  width: 90px;
-  height: 90px;
-  top: 30%;
-  left: 60%;
-}
-
-.planet4 {
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Venus */
-  background-size: cover;
-  width: 60px;
-  height: 60px;
-  top: 80%;
-  left: 30%;
-}
-
-.planet5 {
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Textura de Saturno */
-  background-size: cover;
-  width: 110px;
-  height: 110px;
-  top: 40%;
-  left: 40%;
-}
-
-/* Anillo para Saturno */
-.planet5::after {
-  content: "";
+.cometa::after {
+  content: '';
   position: absolute;
-  width: 160px;
-  height: 160px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  border: 10px solid rgba(255, 255, 255, 0.5); /* Anillo brillante */
-  top: -25px;
-  left: -25px;
-  z-index: -1;
+  background-color: #fff;
+  top: -5px;
+  left: 95px;
+  animation: cometTail 1s infinite;
+}
+
+/* Animación de cometas cruzando el fondo */
+@keyframes cometTail {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
+  100% {
+    width: 2px;
+    height: 2px;
+    opacity: 0;
+  }
+}
+
+/* Movimiento de los cometas */
+@keyframes moveComet1 {
+  0% {
+    left: -120px;
+    top: 10%;
+  }
+  100% {
+    left: 100vw;
+    top: 40%;
+  }
+}
+
+@keyframes moveComet2 {
+  0% {
+    left: -150px;
+    top: 50%;
+  }
+  100% {
+    left: 120vw;
+    top: 10%;
+  }
+}
+
+@keyframes moveComet3 {
+  0% {
+    left: -100px;
+    top: 70%;
+  }
+  100% {
+    left: 100vw;
+    top: 80%;
+  }
+}
+
+/* Estilos individuales para los cometas */
+.cometa1 {
+  animation: moveComet1 10s infinite linear;
+}
+
+.cometa2 {
+  animation: moveComet2 12s infinite linear;
+}
+
+.cometa3 {
+  animation: moveComet3 15s infinite linear;
 }
 
 /* El resto de la tarjeta de cumpleaños y los globos permanece igual */
@@ -269,3 +286,4 @@ p {
 .balloons div {
   animation: floatBalloons 5s ease-in-out infinite;
 }
+
