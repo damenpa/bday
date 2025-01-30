@@ -4,6 +4,8 @@ body {
   justify-content: center;
   height: 100vh;
   background-color: #239ac2;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .birthdayCard {
@@ -13,7 +15,7 @@ body {
   cursor: pointer;
   transform-style: preserve-3d;
   transform: perspective(2500px);
-  transition: 1s;
+  transition: transform 1s, box-shadow 1s;
 }
 
 .birthdayCard:hover {
@@ -39,7 +41,7 @@ body {
   transform-origin: left;
   box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2),
     30px 0 50px rgba(0, 0, 0, 0.4);
-  transition: 0.6s;
+  transition: transform 0.6s;
 }
 
 .happy {
@@ -47,7 +49,10 @@ body {
   text-align: center;
   margin: 30px;
   background-image: linear-gradient(120deg, #ffd856 0%, #f98c6e 100%);
-  transition: 0.1s;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: opacity 0.3s;
 }
 
 .balloons {
@@ -62,30 +67,35 @@ body {
   width: 85px;
   height: 95px;
   border-radius: 50%;
+  animation: float 4s infinite ease-in-out;
 }
 
 .balloon-1 {
   background-color: rgba(255, 40, 90, 0.7);
   left: -10px;
   top: 50px;
+  animation-delay: 0s;
 }
 
 .balloon-2 {
   background-color: rgba(9, 215, 160, 0.7);
   left: 50px;
   top: 20px;
+  animation-delay: 1s;
 }
 
 .balloon-3 {
   background-color: rgba(255, 186, 26, 0.7);
   left: 110px;
   top: 50px;
+  animation-delay: 2s;
 }
 
 .balloon-4 {
   background-color: rgba(12, 122, 159, 0.7);
   left: 170px;
   top: 50px;
+  animation-delay: 3s;
 }
 
 .balloon-1::before,
@@ -138,12 +148,15 @@ body {
   left: 0;
   top: 0;
   box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 p {
   font-family: "Brush Script MT", cursive;
-  margin: 40px;
+  margin: 20px 0;
   color: #333;
+  font-size: 18px;
 }
 
 .name {
@@ -151,6 +164,8 @@ p {
   left: 150px;
   top: 200px;
   color: #333;
+  font-family: "Brush Script MT", cursive;
+  font-size: 20px;
 }
 
 .back {
@@ -160,4 +175,13 @@ p {
   margin: 30px;
   outline-color: #333;
   outline-style: dotted;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
