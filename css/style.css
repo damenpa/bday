@@ -32,7 +32,7 @@ body {
 /* Luna */
 .luna {
   position: absolute;
-  top: 50px;
+  top: 100px;  /* Ajustamos la posición */
   right: 50px;
   width: 150px;
   height: 150px;
@@ -41,6 +41,7 @@ body {
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
   z-index: -1;
   filter: blur(3px);
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%, 20% 50%); /* Media luna */
 }
 
 /* Animación de la luna */
@@ -230,3 +231,4 @@ p {
 .balloons div {
   animation: floatBalloons 5s ease-in-out infinite;
 }
+
