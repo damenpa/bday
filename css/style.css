@@ -1,4 +1,4 @@
-/* Fondo con estrellas y constelaciones */
+/* Fondo con estrellas */
 body {
   display: flex;
   align-items: center;
@@ -23,37 +23,49 @@ body {
 
 /* Parpadeo de estrellas */
 @keyframes twinkle {
-  0% {
-    opacity: 0.7;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
 
-/* Constelaciones */
-.constelaciones {
+/* Cometas */
+.cometa {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  animation: moverCometa 2s linear infinite;
 }
 
-.constelaciones line {
-  stroke: rgba(255, 255, 255, 0.8);
-  stroke-width: 1px;
-  animation: glow 2s infinite alternate;
+/* Estela del cometa */
+.cometa::before {
+  content: "";
+  position: absolute;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.8), transparent);
+  top: 50%;
+  left: -60px;
+  transform: translateY(-50%);
 }
 
-/* Efecto de parpadeo en las líneas de las constelaciones */
-@keyframes glow {
+/* Animación de los cometas */
+@keyframes moverCometa {
   0% {
-    opacity: 0.3;
-  }
-  100% {
+    transform: translate(-10vw, -10vh);
     opacity: 1;
   }
+  100% {
+    transform: translate(100vw, 100vh);
+    opacity: 0;
+  }
 }
+
+/* Distribución aleatoria de cometas */
+.cometa:nth-child(1) { top: 10%; left: -10%; animation-delay: 0s; }
+.cometa:nth-child(2) { top: 30%; left: -15%; animation-delay: 1s; }
+.cometa:nth-child(3) { top: 50%; left: -20%; animation-delay: 1.5s; }
 
 /* El resto del CSS de la tarjeta se mantiene igual */
 .birthdayCard {
@@ -138,58 +150,11 @@ body {
   top: 50px;
 }
 
-.balloon-1::before,
-.balloon-2::before,
-.balloon-3::before,
-.balloon-4::before {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 155px;
-  background-color: #ffc848;
-  top: 95px;
-  left: 43px;
-}
-
-.balloon-1::after,
-.balloon-2::after,
-.balloon-3::after,
-.balloon-4::after {
-  content: "";
-  position: absolute;
-  border-right: 7px solid transparent;
-  border-left: 7px solid transparent;
-  top: 94px;
-  left: 37px;
-}
-
-.balloon-1::after {
-  border-bottom: 10px solid #ff3e6b;
-}
-
-.balloon-2::after {
-  border-bottom: 10px solid #04b183;
-}
-
-.balloon-3::after {
-  border-bottom: 10px solid #ffc94c;
-}
-
-.balloon-4::after {
-  border-bottom: 10px solid #13a9bd;
-}
-
 /* Animación de los globos */
 @keyframes floatBalloons {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
 }
 
 .balloons div {
