@@ -1,4 +1,4 @@
-/* Fondo con estrellas y cometas */
+/* Fondo con estrellas y constelaciones */
 body {
   display: flex;
   align-items: center;
@@ -10,109 +10,52 @@ body {
   position: relative;
 }
 
-/* Estrellas */
+/* Estrellas parpadeantes */
 .estrellas {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Fondo de estrellas */
-  animation: moveStars 300s infinite linear;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 2px);
+  background-size: 5px 5px;
+  animation: twinkle 2s infinite alternate;
   z-index: -1;
 }
 
-@keyframes moveStars {
+/* Parpadeo de estrellas */
+@keyframes twinkle {
   0% {
-    background-position: 0 0;
+    opacity: 0.7;
   }
   100% {
-    background-position: 1000px 1000px;
-  }
-}
-
-/* Cometas */
-.cometa {
-  position: absolute;
-  width: 150px;
-  height: 3px;
-  background-color: #fff;
-  border-radius: 50%;
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-}
-
-.cometa::after {
-  content: '';
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #fff;
-  top: -6px;
-  left: 140px;
-  animation: cometTail 1s infinite;
-}
-
-/* Animación de cola de los cometas */
-@keyframes cometTail {
-  0% {
-    width: 12px;
-    height: 12px;
     opacity: 1;
   }
-  100% {
-    width: 3px;
-    height: 3px;
-    opacity: 0;
-  }
 }
 
-/* Movimiento de los cometas en diagonal */
-@keyframes moveComet1 {
+/* Constelaciones */
+.constelaciones {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.constelaciones line {
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 1px;
+  animation: glow 2s infinite alternate;
+}
+
+/* Efecto de parpadeo en las líneas de las constelaciones */
+@keyframes glow {
   0% {
-    left: -150px;
-    top: 10%;
+    opacity: 0.3;
   }
   100% {
-    left: 110vw;
-    top: 80%;
+    opacity: 1;
   }
 }
 
-@keyframes moveComet2 {
-  0% {
-    left: -200px;
-    top: 20%;
-  }
-  100% {
-    left: 120vw;
-    top: 50%;
-  }
-}
-
-@keyframes moveComet3 {
-  0% {
-    left: -100px;
-    top: 30%;
-  }
-  100% {
-    left: 120vw;
-    top: 70%;
-  }
-}
-
-/* Estilos individuales para los cometas */
-.cometa1 {
-  animation: moveComet1 6s infinite linear;
-}
-
-.cometa2 {
-  animation: moveComet2 5s infinite linear;
-}
-
-.cometa3 {
-  animation: moveComet3 4s infinite linear;
-}
-
-/* El resto de la tarjeta de cumpleaños y los globos permanece igual */
+/* El resto del CSS de la tarjeta se mantiene igual */
 .birthdayCard {
   position: relative;
   width: 250px;
@@ -234,40 +177,6 @@ body {
 
 .balloon-4::after {
   border-bottom: 10px solid #13a9bd;
-}
-
-/* El interior de la tarjeta */
-.cardInside {
-  position: absolute;
-  background-color: #fff;
-  width: 250px;
-  height: 350px;
-  z-index: -1;
-  left: 0;
-  top: 0;
-  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
-}
-
-p {
-  font-family: "Brush Script MT", cursive;
-  margin: 40px;
-  color: #333;
-}
-
-.name {
-  position: absolute;
-  left: 150px;
-  top: 200px;
-  color: #333;
-}
-
-.back {
-  font-family: Tahoma, sans-serif;
-  color: #333;
-  text-align: center;
-  margin: 30px;
-  outline-color: #333;
-  outline-style: dotted;
 }
 
 /* Animación de los globos */
