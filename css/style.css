@@ -1,4 +1,4 @@
-/* Fondo con estrellas */
+/* Fondo con estrellas y cometas */
 body {
   display: flex;
   align-items: center;
@@ -10,64 +10,109 @@ body {
   position: relative;
 }
 
-/* Estrellas parpadeantes */
+/* Estrellas */
 .estrellas {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 1px, transparent 2px);
-  background-size: 5px 5px;
-  animation: twinkle 2s infinite alternate;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Fondo de estrellas */
+  animation: moveStars 300s infinite linear;
   z-index: -1;
 }
 
-/* Parpadeo de estrellas */
-@keyframes twinkle {
-  0% { opacity: 0.7; }
-  100% { opacity: 1; }
+@keyframes moveStars {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 1000px;
+  }
 }
 
 /* Cometas */
 .cometa {
   position: absolute;
-  width: 5px;
-  height: 5px;
-  background-color: white;
+  width: 150px;
+  height: 3px;
+  background-color: #fff;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 1);
-  animation: moverCometa 2s linear infinite;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
 }
 
-/* Estela del cometa */
-.cometa::before {
-  content: "";
+.cometa::after {
+  content: '';
   position: absolute;
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(to left, rgba(255, 255, 255, 0.8), transparent);
-  top: 50%;
-  left: -60px;
-  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  top: -6px;
+  left: 140px;
+  animation: cometTail 1s infinite;
 }
 
-/* Animación de los cometas */
-@keyframes moverCometa {
+/* Animación de cola de los cometas */
+@keyframes cometTail {
   0% {
-    transform: translate(-10vw, -10vh);
+    width: 12px;
+    height: 12px;
     opacity: 1;
   }
   100% {
-    transform: translate(100vw, 100vh);
+    width: 3px;
+    height: 3px;
     opacity: 0;
   }
 }
 
-/* Distribución aleatoria de cometas */
-.cometa:nth-child(1) { top: 10%; left: -10%; animation-delay: 0s; }
-.cometa:nth-child(2) { top: 30%; left: -15%; animation-delay: 1s; }
-.cometa:nth-child(3) { top: 50%; left: -20%; animation-delay: 1.5s; }
+/* Movimiento de los cometas en diagonal */
+@keyframes moveComet1 {
+  0% {
+    left: -150px;
+    top: 10%;
+  }
+  100% {
+    left: 110vw;
+    top: 80%;
+  }
+}
 
-/* El resto del CSS de la tarjeta se mantiene igual */
+@keyframes moveComet2 {
+  0% {
+    left: -200px;
+    top: 20%;
+  }
+  100% {
+    left: 120vw;
+    top: 50%;
+  }
+}
+
+@keyframes moveComet3 {
+  0% {
+    left: -100px;
+    top: 30%;
+  }
+  100% {
+    left: 120vw;
+    top: 70%;
+  }
+}
+
+/* Estilos individuales para los cometas */
+.cometa1 {
+  animation: moveComet1 6s infinite linear;
+}
+
+.cometa2 {
+  animation: moveComet2 5s infinite linear;
+}
+
+.cometa3 {
+  animation: moveComet3 4s infinite linear;
+}
+
+/* El resto de la tarjeta de cumpleaños y los globos permanece igual */
 .birthdayCard {
   position: relative;
   width: 250px;
@@ -150,11 +195,96 @@ body {
   top: 50px;
 }
 
+.balloon-1::before,
+.balloon-2::before,
+.balloon-3::before,
+.balloon-4::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 155px;
+  background-color: #ffc848;
+  top: 95px;
+  left: 43px;
+}
+
+.balloon-1::after,
+.balloon-2::after,
+.balloon-3::after,
+.balloon-4::after {
+  content: "";
+  position: absolute;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  top: 94px;
+  left: 37px;
+}
+
+.balloon-1::after {
+  border-bottom: 10px solid #ff3e6b;
+}
+
+.balloon-2::after {
+  border-bottom: 10px solid #04b183;
+}
+
+.balloon-3::after {
+  border-bottom: 10px solid #ffc94c;
+}
+
+.balloon-4::after {
+  border-bottom: 10px solid #13a9bd;
+}
+
+/* El interior de la tarjeta */
+.cardInside {
+  position: absolute;
+  background-color: #fff;
+  width: 250px;
+  height: 350px;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  font-family: "Brush Script MT", cursive;
+  margin: 40px;
+  color: #333;
+}
+
+.name {
+  position: absolute;
+  left: 150px;
+  top: 200px;
+  color: #333;
+}
+
+.back {
+  font-family: Tahoma, sans-serif;
+  color: #333;
+  text-align: center;
+  margin: 30px;
+  outline-color: #333;
+  outline-style: dotted;
+}
+
 /* Animación de los globos */
 @keyframes floatBalloons {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.balloons div {
+  animation: floatBalloons 5s ease-in-out infinite;
 }
 
 .balloons div {
